@@ -1,0 +1,111 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a class="brand-link">
+    <img
+      src="assets/img/logo.png"
+      alt="AdminLTE Logo"
+      class="brand-image img-circle elevation-0"
+      style="opacity: 0.8"
+    />
+    <div>
+      <span class="brand-text">Hyper AdminLTE</span>
+    </div>
+  </a>
+
+  <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img class="img-circle elevation-0" src="assets/img/AdminAvatar.jpg" />
+      </div>
+      <div class="info">
+        <a routerLink="#" class="d-block">
+          Võ Trung Thường
+          <span class="badge badge-danger ml-2">BOSS</span>
+        </a>
+      </div>
+    </div>
+
+    <nav class="mt-2">
+      <ul
+        class="nav nav-pills nav-sidebar flex-column"
+        data-widget="treeview"
+        role="menu"
+        data-accordion="false"
+      >
+        <li class="nav-item">
+          <a is-active-page routerLink="dashboard" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Dashboard
+              <i class="fas fa-angle-right right"></i>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
+          <a is-active-page routerLink="#" class="nav-link">
+            <i class="nav-icon fas fa-box-open"></i>
+            <p>
+              Quản Lý Sản Phẩm
+              <i class="fas fa-angle-down right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a is-active-page routerLink="products" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Sản Phẩm</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a is-active-page routerLink="categories" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Loại Sản Phẩm</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a is-active-page routerLink="vendors" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Nhà Cung Cấp</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a is-active-page routerLink="brands" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Thương Hiệu</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a is-active-page routerLink="productstatus" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Trạng Thái Sản Phẩm</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a is-active-page routerLink="tags" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Nhãn Sản Phẩm</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a is-active-page routerLink="users" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Tài Khoản
+              <i class="fas fa-angle-right right"></i>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a is-active-page routerLink="orders" class="nav-link">
+            <i class="nav-icon fas fa-money-bill-alt"></i>
+            <p>
+              Quản Lý Đơn Hàng
+              <i class="fas fa-angle-right right"></i>
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

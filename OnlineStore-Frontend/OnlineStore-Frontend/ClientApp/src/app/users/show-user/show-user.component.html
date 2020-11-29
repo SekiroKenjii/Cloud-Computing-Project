@@ -1,0 +1,78 @@
+<div class="card-header">
+  <button
+    class="btn btn-success float-right"
+    data-toggle="modal"
+    data-target="#userModal"
+    (click)="openCreateUser()"
+    data-backdrop="static"
+    data-keyboard="false"
+    title="Thêm mới"
+  >
+    <i class="fas fa-plus"></i> Thêm mới
+  </button>
+</div>
+<div class="card-body">
+  <table class="table table-striped">
+    <thead>
+      <tr class="bg-dark">
+        <th>ID</th>
+        <th>Tên Đầy Đủ</th>
+        <th>Email</th>
+        <th>Số Điện Thoại</th>
+        <th>Địa Chỉ</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of UserList">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstname + " " + user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phonenumber }}</td>
+        <td>{{ user.address }}</td>
+        <td style="width: 150px">
+          <div class="btn-group" role="group">
+            <button
+              class="btn btn-primary text-white"
+              data-toggle="modal"
+              data-target="#userModal"
+              (click)="openEditUser(user)"
+              data-backdrop="static"
+              data-keyboard="false"
+              title="Chỉnh Sửa"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              class="btn btn-danger text-white"
+              title="Xoá"
+              (click)="deleteClick(user.id)"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="userModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{ ModalTitle }}</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeClick()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <app-manage-user [user]="user" *ngIf="ActiveUserModal"></app-manage-user>
+    </div>
+  </div>
+</div>
