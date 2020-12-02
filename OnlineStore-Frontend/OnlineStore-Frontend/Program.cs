@@ -20,6 +20,7 @@ namespace OnlineStore_Frontend
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("http://localhost:4200");
                     webBuilder.UseStartup<Startup>();
                 });
     }
