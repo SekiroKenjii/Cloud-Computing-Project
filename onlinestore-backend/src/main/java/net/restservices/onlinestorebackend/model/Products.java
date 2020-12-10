@@ -16,6 +16,17 @@ public class Products {
     @Column(name = "vendorName")
     private String vendorName;
 
+    @Column(name = "typeName")
+    private String typeName;
+
+    @Column(name = "brandName")
+    private String brandName;
+
+    @Column(name = "lableName")
+    private String lableName;
+
+
+
     @Column(name = "price")
     private int price;
 
@@ -23,10 +34,13 @@ public class Products {
 
     }
 
-    public Products(String productName, String vendorName, int price) {
+    public Products(String productName, String vendorName,String typeName,String brandName,String lableName, int price) {
         super();
         this.productName = productName;
         this.vendorName = vendorName;
+        this.brandName = brandName;
+        this.lableName = lableName;
+        this.typeName = typeName;
         this.price = price;
     }
 
@@ -60,5 +74,29 @@ public class Products {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public String getLableName() {
+        return lableName;
+    }
+
+    public void setLableName(String lableId) {
+        this.lableName = lableId;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandId) {
+        this.brandName = brandId;
     }
 }

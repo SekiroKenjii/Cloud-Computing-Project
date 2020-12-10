@@ -13,11 +13,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>onlinestore-backend</name>
     <description>Demo project for Spring Boot</description>
-
     <properties>
         <java.version>11</java.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -34,6 +32,8 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

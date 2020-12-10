@@ -24,17 +24,21 @@ public class ProductsController {
         return proRepository.findAll();
     }
 
-    @PostMapping("/creatproducts")
+    @PostMapping("/createproducts")
     public Products createProducts(@RequestBody Products pro){
         return proRepository.save(pro);
     }
 
     @PutMapping("/updatproducts/{id}")
-    public ResponseEntity<Products> updatepro(@PathVariable Long id, @RequestBody Products proRequest){
+    public ResponseEntity<Products> updateProduct(@PathVariable Long id, @RequestBody Products proRequest){
         Products pro = proRepository.findById(id)
                 .orElseThrow(()->new ResourceNotFoundException("Cannot find any user with id: " + id));
         pro.setProductName(proRequest.getProductName());
+
         pro.setVendorName(proRequest.getVendorName());
+        pro.setBrandName(proRequest.getBrandName());
+        pro.setTypeName(proRequest.getTypeName());
+        pro.setLableName(proRequest.getLableName());
         pro.setPrice(proRequest.getPrice());
 
         Products updateProducts = proRepository.save(pro);
@@ -42,7 +46,7 @@ public class ProductsController {
     }
 
     @DeleteMapping("/deleteproducts/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteUser(@PathVariable Long id){
+    public ResponseEntity<Map<String, Boolean>> deleteProduct(@PathVariable Long id){
         Products pro = proRepository.findById(id)
                 .orElseThrow(()->new ResourceNotFoundException("Cannot find any user with id: " + id));
         proRepository.delete(pro);
