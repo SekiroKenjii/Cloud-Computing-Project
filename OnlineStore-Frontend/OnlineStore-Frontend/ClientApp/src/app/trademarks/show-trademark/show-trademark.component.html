@@ -1,0 +1,86 @@
+<div class="card-header">
+  <button
+    class="btn btn-success float-right"
+    data-toggle="modal"
+    data-target="#trademarkModal"
+    (click)="openCreateTrademark()"
+    data-backdrop="static"
+    data-keyboard="false"
+    title="Thêm mới"
+  >
+    <i class="fas fa-plus"></i> Thêm mới
+  </button>
+</div>
+<div class="card-body">
+  <table class="table table-striped">
+    <thead>
+      <tr class="bg-dark">
+        <th>ID</th>
+        <th>Tên Thương Hiệu</th>
+        <th>Trạng Thái</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tm of TrademarkList">
+        <td>{{ tm.id }}</td>
+        <td>{{ tm.name }}</td>
+        <td>{{ tm.status }}</td>
+        <td style="width: 150px">
+          <div class="btn-group" role="group">
+            <button
+              class="btn btn-primary text-white"
+              (click)="openEditTrademark(tm.id)"
+              data-toggle="modal"
+              data-target="#trademarkModal"
+              data-backdrop="static"
+              data-keyboard="false"
+              title="Chỉnh Sửa"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              class="btn btn-success text-white"
+              id="detailsModal"
+              (click)="openDetailsTrademark(tm.id)"
+              title="Chi Tiết"
+            >
+              <i class="fas fa-list"></i>
+            </button>
+            <button
+              class="btn btn-danger text-white"
+              title="Xoá"
+              (click)="deleteClick(tm.id)"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="trademarkModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{ ModalTitle }}</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeClick()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <app-manage-trademark
+        [trademark]="trademark"
+        [activeDetailsModal]="activeDetailsModal"
+        *ngIf="ActiveTrademarkModal"
+      ></app-manage-trademark>
+    </div>
+  </div>
+</div>

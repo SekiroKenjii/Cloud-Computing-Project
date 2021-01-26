@@ -1,0 +1,36 @@
+<div class="modal-body">
+  <div class="form-group">
+    <label>Tên loại hàng</label>
+    <input type="text" class="form-control" [(ngModel)]="Name" />
+  </div>
+  <div class="form-group">
+    <label>Trạng thái</label>
+    <select
+      class="form-control select2"
+      [(ngModel)]="selectedStatus"
+      style="width: 100%"
+    >
+      <option *ngFor="let option of Options" [value]="option">
+        {{ option }}
+      </option>
+    </select>
+  </div>
+</div>
+<div class="modal-footer justify-content-end">
+  <button
+    type="button"
+    class="btn btn-success"
+    *ngIf="category.id == 0"
+    (click)="createClick()"
+  >
+    Tạo mới
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    *ngIf="category.id != 0"
+    (click)="saveClick()"
+  >
+    Save changes
+  </button>
+</div>

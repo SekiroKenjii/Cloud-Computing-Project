@@ -20,19 +20,19 @@ public class CategoryController {
     private CategoryRepository categoryRepository;
 
     @GetMapping("/categories")
-    public List<Category> getAddCategories(){
+    public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
     @PostMapping("/createcategory")
-    public Category createCategory(@RequestBody Category category){
+    public Category createCategory(@RequestBody Category category) {
         return categoryRepository.save(category);
     }
 
     @PutMapping("/updatecategory/{id}")
-    public ResponseEntity<Category> updateCategory(@PathVariable long id, @RequestBody Category categoryRequest){
+    public ResponseEntity<Category> updateCategory(@PathVariable long id, @RequestBody Category categoryRequest) {
         Category category = categoryRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("Cannot find any category with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Cannot find any category with id: " + id));
 
         category.setName(categoryRequest.getName());
         category.setStatus(categoryRequest.getStatus());
@@ -42,9 +42,9 @@ public class CategoryController {
     }
 
     @DeleteMapping("/deletecategory/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteCategory(@PathVariable long id){
+    public ResponseEntity<Map<String, Boolean>> deleteCategory(@PathVariable long id) {
         Category category = categoryRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("Cannot find any category with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Cannot find any category with id: " + id));
 
         categoryRepository.delete(category);
         Map<String, Boolean> response = new HashMap<>();

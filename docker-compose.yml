@@ -1,0 +1,61 @@
+version: "3.9"
+
+# Define services
+services:
+  backend:
+    depends_on:
+      - database
+    build:
+      context: ./onlinestore-backend/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/cloudcomputing?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: Thuong0165
+    networks:
+      - backend-network
+      - frontend-network
+
+  database:
+    image: mysql/mysql-server
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: cloudcomputing
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: Thuong0165
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - backend-network
+
+  frontend:
+    depends_on:
+      - backend
+    container_name: client-app
+    build:
+      context: ./OnlineStore-Frontend/OnlineStore-Frontend/ClientApp/
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    restart: always
+    networks:
+      - frontend-network
+
+#Docker Networks
+networks:
+  backend-network:
+    driver: bridge
+  frontend-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  db_data:
+    driver: local

@@ -1,0 +1,79 @@
+<div class="card-header">
+  <button
+    class="btn btn-success float-right"
+    data-toggle="modal"
+    data-target="#prodStatusModal"
+    (click)="openCreateProdStatus()"
+    data-backdrop="static"
+    data-keyboard="false"
+    title="Thêm mới"
+  >
+    <i class="fas fa-plus"></i> Thêm mới
+  </button>
+</div>
+<div class="card-body">
+  <table class="table table-striped">
+    <thead>
+      <tr class="bg-dark">
+        <th>ID</th>
+        <th>Tên Trạng Thái</th>
+        <th>Mô Tả</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prodstatus of ProdStatusList">
+        <td>{{ prodstatus.id }}</td>
+        <td>{{ prodstatus.name }}</td>
+        <td style="overflow: hidden; white-space: wrap; width: 600px">
+          {{ prodstatus.description }}
+        </td>
+        <td style="width: 150px">
+          <div class="btn-group" role="group">
+            <button
+              class="btn btn-primary text-white"
+              data-toggle="modal"
+              data-target="#prodStatusModal"
+              (click)="openEditProdStatus(prodstatus)"
+              data-backdrop="static"
+              data-keyboard="false"
+              title="Chỉnh Sửa"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              class="btn btn-danger text-white"
+              title="Xoá"
+              (click)="deleteClick(prodstatus.id)"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="prodStatusModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{ ModalTitle }}</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeClick()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <app-manage-prod-status
+        [prodstatus]="prodstatus"
+        *ngIf="ActiveProdStatusModal"
+      ></app-manage-prod-status>
+    </div>
+  </div>
+</div>

@@ -14,13 +14,13 @@ public class Category {
     private String Name;
 
     @Column(name = "status")
-    private Status Status;
+    private String Status;
 
-    public Category(){
+    public Category() {
 
     }
 
-    public Category(String name, Status status) {
+    public Category(String name, String status) {
         super();
         this.Name = name;
         this.Status = status;
@@ -42,11 +42,11 @@ public class Category {
         this.Name = name;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return Status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.Status = status;
     }
 }

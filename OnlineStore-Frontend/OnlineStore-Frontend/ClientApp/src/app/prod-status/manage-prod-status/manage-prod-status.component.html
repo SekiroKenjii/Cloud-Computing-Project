@@ -1,0 +1,39 @@
+<div class="modal-body">
+  <div class="form-group">
+    <label>Tên trạng thái hàng</label>
+    <input type="text" class="form-control" [(ngModel)]="Name" />
+  </div>
+  <div class="form-group">
+    <label>Mô tả</label>
+    <textarea
+      class="textarea"
+      placeholder="Place some text here"
+      style="
+        width: 100%;
+        height: 200px;
+        font-size: 14px;
+        line-height: 18px;
+        border: 1px solid #dddddd;
+        padding: 10px;
+      "
+    ></textarea>
+  </div>
+</div>
+<div class="modal-footer justify-content-end">
+  <button
+    type="button"
+    class="btn btn-success"
+    *ngIf="prodstatus.id == 0"
+    (click)="createClick()"
+  >
+    Tạo mới
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    *ngIf="prodstatus.id != 0"
+    (click)="saveClick()"
+  >
+    Save changes
+  </button>
+</div>
