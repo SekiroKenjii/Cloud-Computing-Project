@@ -6,6 +6,6 @@
 - Angular 11
 - MySQL
 ## Project Structure
-- UI: using angular 11 running on .NET Core 5
-- BackEnd: using Spring Boot 2.4.0 running on Java 11
+- UI: using Angular 11
+- Backend: using Spring Boot 2.4.0 running on Java 11
 - DB: using MySQL
