@@ -1,12 +1,21 @@
-FROM node:12.16.1-alpine As builder
-EXPOSE 4200 49153
-USER node
+### STAGE 2: Build ###
+FROM node:14.15.0 as build
 
-RUN mkdir /home/node/.npm-global
-ENV PATH=/home/node/.npm-global/bin:$PATH
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+WORKDIR /usr/src/app
 
-RUN npm install -g @angular/cli
+COPY package*.json ./
 
-WORKDIR /app
-CMD ["ng", "serve", "--port", "4200", "--host", "0.0.0.0", "--disable-host-check", "--poll", "2000"]
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+### STAGE 2: Run ###
+FROM nginx:1.19.6-alpine
+
+COPY default.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=build /usr/src/app/dist/ClientApp /usr/share/nginx/html
+
+EXPOSE 4200

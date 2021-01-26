@@ -3,13 +3,6 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM node:12.16.1-alpine As builder
-ARG skip_client_build=false 
-WORKDIR /app 
-COPY ./ClientApp . 
-RUN [[ ${skip_client_build} = true ]] && echo "Skipping npm install" || npm install 
-RUN [[ ${skip_client_build} = true ]] && mkdir dist || npm run-script build
-
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["OnlineStore-Frontend.csproj", "./"]
@@ -21,8 +14,18 @@ RUN dotnet build "OnlineStore-Frontend.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "OnlineStore-Frontend.csproj" -c Release -o /app/publish
 
+FROM node as nodebuilder
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+COPY ./ClientApp/package.json /usr/src/app/package.json
+RUN npm install
+COPY ./ClientApp/. /usr/src/app
+RUN npm run build
+
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY --from=client /app/dist /app/dist
+RUN mkdir -p /app/ClientApp/dist
+COPY --from=nodebuilder /usr/src/app/dist/. /app/ClientApp/dist/
 ENTRYPOINT ["dotnet", "OnlineStore-Frontend.dll"]

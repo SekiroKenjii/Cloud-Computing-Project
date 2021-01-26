@@ -14,6 +14,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UsersComponent } from './users/users.component';
 import { ShowUserComponent } from './users/show-user/show-user.component';
 import { ManageUserComponent } from './users/manage-user/manage-user.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { ShowCategoryComponent } from './categories/show-category/show-category.component';
+import { ManageCategoryComponent } from './categories/manage-category/manage-category.component';
+import { VendorsComponent } from './vendors/vendors.component';
+import { ShowVendorComponent } from './vendors/show-vendor/show-vendor.component';
+import { ManageVendorComponent } from './vendors/manage-vendor/manage-vendor.component';
+import { ProdStatusComponent } from './prod-status/prod-status.component';
+import { ShowProdStatusComponent } from './prod-status/show-prod-status/show-prod-status.component';
+import { ManageProdStatusComponent } from './prod-status/manage-prod-status/manage-prod-status.component';
+import { ProdTagComponent } from './prod-tag/prod-tag.component';
+import { ManageProdTagComponent } from './prod-tag/manage-prod-tag/manage-prod-tag.component';
+import { ShowProdTagComponent } from './prod-tag/show-prod-tag/show-prod-tag.component';
+import { TrademarksComponent } from './trademarks/trademarks.component';
+import { ShowTrademarkComponent } from './trademarks/show-trademark/show-trademark.component';
+import { ManageTrademarkComponent } from './trademarks/manage-trademark/manage-trademark.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +39,22 @@ import { ManageUserComponent } from './users/manage-user/manage-user.component';
     AppfooterComponent,
     UsersComponent,
     ShowUserComponent,
-    ManageUserComponent
+    ManageUserComponent,
+    CategoriesComponent,
+    ShowCategoryComponent,
+    ManageCategoryComponent,
+    VendorsComponent,
+    ShowVendorComponent,
+    ManageVendorComponent,
+    ProdStatusComponent,
+    ShowProdStatusComponent,
+    ManageProdStatusComponent,
+    ProdTagComponent,
+    ManageProdTagComponent,
+    ShowProdTagComponent,
+    TrademarksComponent,
+    ShowTrademarkComponent,
+    ManageTrademarkComponent
   ],
   imports: [
     BrowserModule,
